@@ -17,13 +17,15 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
+        final int xResolution = resolution.width;
+        final int yResolution = resolution.height;
 
         //Random random = new Random(); //Move to model
         //int x = random.nextInt(resolution.width * 7 / 10) + resolution.width / 10;
         //int y = random.nextInt(resolution.height * 7 / 10) + resolution.height / 10;
 
         var mainMenu = new MainMenu(window);
-        mainMenu.init(resolution);
+        mainMenu.init(xResolution, yResolution);
 
         //window.setLocation(x, y); //Move to model
 

@@ -9,24 +9,53 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.ButtonListener;
+import model.EasyMode;
+
 public class EasyView {
+
+    private EasyMode easyMode = new EasyMode();
     private JFrame window;
+
+    private int xResolution;
+    private int yResolution;
     
-    public EasyView(JFrame window) {
+    public EasyView(JFrame window, int xResolution, int yResolution) {
         this.window = window;
         window.setTitle("Easy Mode");
+        this.xResolution = xResolution;
+        this.yResolution = yResolution;
     }
 
-    public void init(Dimension resolution) {
+    public void init() {
         Container container = window.getContentPane();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 1));
-        panel.setPreferredSize(new Dimension(resolution.width / 10, resolution.width / 10));
-        window.setLocation(resolution.width / 2 - resolution.width / 20, resolution.height / 2 - resolution.width / 20);
+        panel.setPreferredSize(new Dimension(xResolution / 10, xResolution / 10));
+        window.setLocation(xResolution / 2 - xResolution / 20, yResolution / 2 - xResolution / 20);
 
         JButton target = new JButton("Click Me To Start");
         panel.add(target);
 
         container.add(BorderLayout.CENTER, panel);
+
+        ButtonListener buttonListener = new ButtonListener(this);
+        target.addActionListener(buttonListener);
+    }
+
+    public EasyMode getEasyMode() {
+        return easyMode;
+    }
+
+    public JFrame getWindow() {
+        return window;
+    }
+
+    public int getXResolution() {
+        return xResolution;
+    }
+
+    public int getYResolution() {
+        return yResolution;
     }
 }

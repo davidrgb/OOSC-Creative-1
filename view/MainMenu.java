@@ -18,12 +18,14 @@ public class MainMenu {
         window.setTitle("Main Menu");
     }
 
-    public void init(Dimension resolution) {
+    public void init(int xResolution, int yResolution) {
         Container container = window.getContentPane();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
-        panel.setPreferredSize(new Dimension(resolution.width / 5, resolution.width / 5));
-        window.setLocation(resolution.width / 2 - resolution.width / 10, resolution.height / 2 - resolution.width / 10);
+        //panel.setPreferredSize(new Dimension(resolution.width / 5, resolution.width / 5));
+        panel.setPreferredSize(new Dimension(xResolution / 5, xResolution / 5));
+        //window.setLocation(resolution.width / 2 - resolution.width / 10, resolution.height / 2 - resolution.width / 10);
+        window.setLocation(xResolution / 2 - xResolution / 10, yResolution / 2 - xResolution / 10);
 
         JButton easyButton = new JButton("Easy");
         JButton normalButton = new JButton("Normal");
@@ -36,8 +38,8 @@ public class MainMenu {
 
         easyButton.addActionListener( e -> {
             window.getContentPane().removeAll();
-            var easy = new EasyView(window);
-            easy.init(resolution);
+            var easy = new EasyView(window, xResolution, yResolution);
+            easy.init();
             window.pack();
             window.revalidate();
         });
