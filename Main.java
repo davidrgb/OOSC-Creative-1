@@ -17,8 +17,8 @@ public class Main {
         Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
 
         Random random = new Random();
-        int x = random.nextInt(resolution.width * 3 / 5) + resolution.width / 5;
-        int y = random.nextInt(resolution.height * 3 / 5) + resolution.height / 5;
+        int x = random.nextInt(resolution.width * 7 / 10) + resolution.width / 10;
+        int y = random.nextInt(resolution.height * 7 / 10) + resolution.height / 10;
 
         window.setLocation(x, y);
 
@@ -35,5 +35,19 @@ public class Main {
 
         window.pack();
         window.setVisible(true);
+
+        while (true) { //Bounds testing
+            try {
+                x = random.nextInt(resolution.width * 7 / 10) + resolution.width / 10;
+                y = random.nextInt(resolution.height * 7 / 10) + resolution.height / 10;
+
+                window.setLocation(x, y);
+
+                Thread.sleep(250);
+            }
+            catch (InterruptedException e) {
+                System.out.println("INTERRUPTION");
+            }
+        }
     }
 }
