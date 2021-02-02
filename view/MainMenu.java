@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -22,7 +23,7 @@ public class MainMenu {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
         panel.setPreferredSize(new Dimension(resolution.width / 5, resolution.width / 5));
-        window.setLocation(resolution.width / 10, resolution.width / 10);
+        window.setLocation(resolution.width / 2 - resolution.width / 10, resolution.height / 2 - resolution.width / 10);
 
         JButton easyButton = new JButton("Easy");
         JButton normalButton = new JButton("Normal");
@@ -31,7 +32,15 @@ public class MainMenu {
         panel.add(normalButton);
         panel.add(impossibleButton);
 
-        container.add(panel);
+        container.add(BorderLayout.CENTER, panel);
+
+        easyButton.addActionListener( e -> {
+            window.getContentPane().removeAll();
+            var easy = new EasyView(window);
+            easy.init(resolution);
+            window.pack();
+            window.revalidate();
+        });
     }
     
 }
