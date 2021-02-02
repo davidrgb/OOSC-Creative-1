@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import view.MainMenu;
+
 import java.util.Random;
 
 public class Main {
@@ -16,27 +18,30 @@ public class Main {
 
         Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
 
-        Random random = new Random();
-        int x = random.nextInt(resolution.width * 7 / 10) + resolution.width / 10;
-        int y = random.nextInt(resolution.height * 7 / 10) + resolution.height / 10;
+        //Random random = new Random(); //Move to model
+        //int x = random.nextInt(resolution.width * 7 / 10) + resolution.width / 10;
+        //int y = random.nextInt(resolution.height * 7 / 10) + resolution.height / 10;
 
-        window.setLocation(x, y);
+        var mainMenu = new MainMenu(window);
+        mainMenu.init(resolution);
 
-        Container cp = window.getContentPane();
+        //window.setLocation(x, y); //Move to model
+
+        /*Container cp = window.getContentPane(); //Move to view;
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 1));
-        panel.setPreferredSize(new Dimension(resolution.width / 10, resolution.width / 10));
+        panel.setPreferredSize(new Dimension(resolution.width / 10, resolution.width / 10));*/
 
-        JButton catchMe = new JButton("Catch Me");
+        //JButton catchMe = new JButton("Catch Me"); //Move to view
 
-        panel.add(catchMe);
+        //panel.add(catchMe); //Move to view
 
-        cp.add(panel);
+        //cp.add(panel); //Move to view
 
         window.pack();
         window.setVisible(true);
 
-        while (true) { //Bounds testing
+        /*while (true) { //Move to model
             try {
                 x = random.nextInt(resolution.width * 7 / 10) + resolution.width / 10;
                 y = random.nextInt(resolution.height * 7 / 10) + resolution.height / 10;
@@ -48,6 +53,6 @@ public class Main {
             catch (InterruptedException e) {
                 System.out.println("INTERRUPTION");
             }
-        }
+        }*/
     }
 }
