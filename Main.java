@@ -17,8 +17,8 @@ public class Main {
         Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
 
         Random random = new Random();
-        int x = random.nextInt(resolution.width);
-        int y = random.nextInt(resolution.height);
+        int x = random.nextInt(resolution.width * 3 / 5) + resolution.width / 5;
+        int y = random.nextInt(resolution.height * 3 / 5) + resolution.height / 5;
 
         window.setLocation(x, y);
 
