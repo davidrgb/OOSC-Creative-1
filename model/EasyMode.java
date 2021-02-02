@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Dimension;
-
 import java.util.Random;
 
 public class EasyMode {
