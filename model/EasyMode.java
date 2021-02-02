@@ -9,7 +9,13 @@ public class EasyMode {
     private int xLocation; // Displacement based on horizontal axis
     private int yLocation; // Displacement base on vertical axis
 
-    Random random = new Random(); //Move to model
+    private int score;
+
+    Random random = new Random();
+
+    public EasyMode() {
+        score = 0;
+    }
 
     public void randomLocation(int xResolution, int yResolution) {
         xLocation = random.nextInt(xResolution * 7 / 10) + xResolution / 10;
@@ -22,5 +28,13 @@ public class EasyMode {
 
     public int getY() {
         return yLocation;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void incrementScore() {
+        ++score;
     }
 }

@@ -19,6 +19,10 @@ public class ButtonListener implements ActionListener {
         JFrame window = panel.getWindow();
         int xResolution = panel.getXResolution();
         int yResolution = panel.getYResolution();
+        panel.getEasyMode().incrementScore();
+        int score = panel.getEasyMode().getScore();
+        panel.setButtonText(score);
+        System.out.println(score);
         panel.getEasyMode().randomLocation(xResolution, yResolution);
         window.setLocation(panel.getEasyMode().getX(), panel.getEasyMode().getY());
     }

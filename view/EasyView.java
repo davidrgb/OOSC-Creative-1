@@ -19,6 +19,8 @@ public class EasyView {
 
     private int xResolution;
     private int yResolution;
+
+    private JButton target = new JButton("Click Me To Start");
     
     public EasyView(JFrame window, int xResolution, int yResolution) {
         this.window = window;
@@ -34,7 +36,6 @@ public class EasyView {
         panel.setPreferredSize(new Dimension(xResolution / 10, xResolution / 10));
         window.setLocation(xResolution / 2 - xResolution / 20, yResolution / 2 - xResolution / 20);
 
-        JButton target = new JButton("Click Me To Start");
         panel.add(target);
 
         container.add(BorderLayout.CENTER, panel);
@@ -57,5 +58,9 @@ public class EasyView {
 
     public int getYResolution() {
         return yResolution;
+    }
+
+    public void setButtonText(int score) {
+        target.setText(String.valueOf(score));
     }
 }
