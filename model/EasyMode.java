@@ -17,7 +17,7 @@ public class EasyMode {
 
     public EasyMode() {
         score = 0;
-        interval = 5000; // 5 seconds / 5000 milliseconds after first decreaseTime call
+        interval = 5000; // 5 seconds / 5000 milliseconds
         time = interval;
     }
 

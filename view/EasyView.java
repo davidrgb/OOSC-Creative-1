@@ -49,13 +49,13 @@ public class EasyView {
         ButtonListener buttonListener = new ButtonListener(this);
         target.addActionListener(buttonListener);
     }
+    
+    public JFrame getWindow() {
+        return window;
+    }
 
     public EasyMode getEasyMode() {
         return easyMode;
-    }
-
-    public JFrame getWindow() {
-        return window;
     }
 
     public int getXResolution() {
