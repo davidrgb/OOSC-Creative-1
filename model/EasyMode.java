@@ -1,10 +1,6 @@
 package model;
 
 import java.util.Random;
-//import java.util.Timer;
-//import java.util.TimerTask;
-
-//import javax.swing.JFrame;
 
 public class EasyMode {
 
@@ -15,8 +11,6 @@ public class EasyMode {
 
     private long interval;
 
-    //private Timer timer;
-
     private long time;
 
     Random random = new Random();
@@ -25,7 +19,6 @@ public class EasyMode {
         score = 0;
         interval = 5000; // 5 seconds / 5000 milliseconds after first decreaseTime call
         time = interval;
-        //timer = new Timer();
     }
 
     public void randomLocation(int xResolution, int yResolution) {
@@ -52,27 +45,6 @@ public class EasyMode {
     public void decreaseInterval() {
         interval = Math.round(interval * 0.95);
     }
-
-    /*public void countdown() {
-        timer.scheduleAtFixedRate(new TimerTask(){
-            public void run() {
-                time--;
-                if (time == 0) {
-                    System.out.println("TIMER ELAPSED");
-                    timer.cancel();
-                    window.getContentPane().removeAll();
-                    var easy = new EasyView(window, xResolution, yResolution);
-                    easy.init();
-                    window.pack();
-                    window.revalidate();
-                }
-            }
-        }, 0, 1);
-    }*/
-
-    /*public Timer getTimer() {
-        return timer;
-    }*/
 
     public long getTime() {
         return time;
