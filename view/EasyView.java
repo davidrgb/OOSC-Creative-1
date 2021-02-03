@@ -29,6 +29,7 @@ public class EasyView {
 
     public EasyView(JFrame window, int xResolution, int yResolution) {
         this.window = window;
+        window.setTitle("");
         this.xResolution = xResolution;
         this.yResolution = yResolution;
 
@@ -67,7 +68,7 @@ public class EasyView {
     }
 
     public void setButtonText(String buttonText) {
-        target.setText(buttonText);
+        target.setText("Score: " + buttonText);
     }
 
     public void countdown() {
@@ -78,7 +79,7 @@ public class EasyView {
                 long time = easyMode.getTime();
                 easyMode.setTime(--time);
                 double timeSeconds = time / 1000.0;
-                String formattedTime = String.format("%.3f", timeSeconds);
+                String formattedTime = String.format("%.1f", timeSeconds);
                 window.setTitle(formattedTime);
     
                 if (time == 0) {

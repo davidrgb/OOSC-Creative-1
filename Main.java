@@ -14,8 +14,8 @@ public class Main {
         final int xResolution = resolution.width;
         final int yResolution = resolution.height;
 
-        var mainMenu = new MainMenu(window);
-        mainMenu.init(xResolution, yResolution);
+        var mainMenu = new MainMenu(window, xResolution, yResolution);
+        mainMenu.init();
 
         window.pack();
         window.setVisible(true);

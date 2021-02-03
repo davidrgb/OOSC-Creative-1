@@ -13,12 +13,17 @@ public class MainMenu {
 
     private JFrame window;
 
-    public MainMenu(JFrame window) {
+    private int xResolution;
+    private int yResolution;
+
+    public MainMenu(JFrame window, int xResolution, int yResolution) {
         this.window = window;
         window.setTitle("Main Menu");
+        this.xResolution = xResolution;
+        this.yResolution = yResolution;
     }
 
-    public void init(int xResolution, int yResolution) {
+    public void init() {
         Container container = window.getContentPane();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
