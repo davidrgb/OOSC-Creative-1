@@ -85,7 +85,7 @@ public class NormalView {
                 if (time == 0) {
                     timer.cancel();
                     window.getContentPane().removeAll();
-                    var gameOver = new NormalGameOverView(window, xResolution, yResolution);
+                    var gameOver = new NormalGameOverView(window, xResolution, yResolution, normalMode.getScore());
                     gameOver.init();
                     window.pack();
                     window.revalidate();
