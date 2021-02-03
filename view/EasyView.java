@@ -85,7 +85,7 @@ public class EasyView {
                 if (time == 0) {
                     timer.cancel();
                     window.getContentPane().removeAll();
-                    var gameOver = new EasyGameOverView(window, xResolution, yResolution);
+                    var gameOver = new EasyGameOverView(window, xResolution, yResolution, easyMode.getScore());
                     gameOver.init();
                     window.pack();
                     window.revalidate();
