@@ -40,24 +40,39 @@ public class MainMenu {
         container.add(BorderLayout.CENTER, panel);
 
         easyButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
+            /*window.getContentPane().removeAll();
             var easy = new EasyView(window, xResolution, yResolution);
+            easy.init();
+            window.pack();
+            window.revalidate();*/
+            window.getContentPane().removeAll();
+            var easy = new GameView(window, xResolution, yResolution, 1);
             easy.init();
             window.pack();
             window.revalidate();
         });
 
         normalButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
+            /*window.getContentPane().removeAll();
             var normal = new NormalView(window, xResolution, yResolution);
+            normal.init();
+            window.pack();
+            window.revalidate();*/
+            window.getContentPane().removeAll();
+            var normal = new GameView(window, xResolution, yResolution, 2);
             normal.init();
             window.pack();
             window.revalidate();
         });
 
         impossibleButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
+            /*window.getContentPane().removeAll();
             var impossible = new ImpossibleView(window, xResolution, yResolution);
+            impossible.init();
+            window.pack();
+            window.revalidate();*/
+            window.getContentPane().removeAll();
+            var impossible = new GameView(window, xResolution, yResolution, 3);
             impossible.init();
             window.pack();
             window.revalidate();
