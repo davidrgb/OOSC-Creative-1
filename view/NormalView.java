@@ -11,13 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controller.EasyButtonListener;
-import model.EasyMode;
+import controller.NormalButtonListener;
+import model.NormalMode;
 
-public class EasyView {
+public class NormalView {
 
     private JFrame window;
-    private EasyMode easyMode = new EasyMode();
+    private NormalMode normalMode = new NormalMode();
 
     private int xResolution;
     private int yResolution;
@@ -27,7 +27,7 @@ public class EasyView {
 
     private JButton target = new JButton("Click Me To Start");
 
-    public EasyView(JFrame window, int xResolution, int yResolution) {
+    public NormalView(JFrame window, int xResolution, int yResolution) {
         this.window = window;
         window.setTitle("");
         this.xResolution = xResolution;
@@ -47,7 +47,7 @@ public class EasyView {
 
         container.add(BorderLayout.CENTER, panel);
 
-        EasyButtonListener buttonListener = new EasyButtonListener(this);
+        NormalButtonListener buttonListener = new NormalButtonListener(this);
         target.addActionListener(buttonListener);
     }
     
@@ -55,8 +55,8 @@ public class EasyView {
         return window;
     }
 
-    public EasyMode getEasyMode() {
-        return easyMode;
+    public NormalMode getNormalMode() {
+        return normalMode;
     }
 
     public int getXResolution() {
@@ -76,8 +76,8 @@ public class EasyView {
         timer = new Timer();
         timerTask = new TimerTask(){
             public void run() {
-                long time = easyMode.getTime();
-                easyMode.setTime(--time);
+                long time = normalMode.getTime();
+                normalMode.setTime(--time);
                 double timeSeconds = time / 1000.0;
                 String formattedTime = String.format("%.1f", timeSeconds);
                 window.setTitle(formattedTime);
@@ -85,7 +85,7 @@ public class EasyView {
                 if (time == 0) {
                     timer.cancel();
                     window.getContentPane().removeAll();
-                    var gameOver = new EasyGameOverView(window, xResolution, yResolution);
+                    var gameOver = new NormalGameOverView(window, xResolution, yResolution);
                     gameOver.init();
                     window.pack();
                     window.revalidate();

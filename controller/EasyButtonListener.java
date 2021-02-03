@@ -9,10 +9,10 @@ import javax.swing.JFrame;
 
 import view.EasyView;
 
-public class ButtonListener implements ActionListener {
+public class EasyButtonListener implements ActionListener {
     private EasyView panel;
 
-    public ButtonListener(EasyView panel) {
+    public EasyButtonListener(EasyView panel) {
         this.panel = panel;
     }
 
