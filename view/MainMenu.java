@@ -26,18 +26,28 @@ public class MainMenu {
     public void init() {
         Container container = window.getContentPane();
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 1));
+        panel.setLayout(new GridLayout(4, 1));
         panel.setPreferredSize(new Dimension(xResolution / 5, xResolution / 5));
         window.setLocation(xResolution / 2 - xResolution / 10, yResolution / 2 - xResolution / 10);
 
+        JButton instructionsButton = new JButton("How To Play");
         JButton easyButton = new JButton("Easy");
         JButton normalButton = new JButton("Normal");
         JButton impossibleButton = new JButton("Impossible");
+        panel.add(instructionsButton);
         panel.add(easyButton);
         panel.add(normalButton);
         panel.add(impossibleButton);
 
         container.add(BorderLayout.CENTER, panel);
+
+        instructionsButton.addActionListener( e -> {
+            window.getContentPane().removeAll();
+            var instructions = new InstructionsView(window, xResolution, yResolution);
+            instructions.init();
+            window.pack();
+            window.revalidate();
+        });
 
         easyButton.addActionListener( e -> {
             window.getContentPane().removeAll();
