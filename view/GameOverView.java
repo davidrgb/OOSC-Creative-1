@@ -55,11 +55,6 @@ public class GameOverView {
 
         newGameButton.addActionListener( e -> {
             window.getContentPane().removeAll();
-            /*switch (mode) {
-                case 1: var easy = new EasyView(window, xResolution, yResolution); easy.init(); break;
-                case 2: var normal = new NormalView(window, xResolution, yResolution); normal.init(); break;
-                case 3: var impossible = new ImpossibleView(window, xResolution, yResolution); impossible.init(); break;
-            }*/
             var game = new GameView(window, xResolution, yResolution, mode);
             game.init();
             window.pack();

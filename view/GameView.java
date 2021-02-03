@@ -94,11 +94,6 @@ public class GameView {
                 if (time == 0) {
                     timer.cancel();
                     window.getContentPane().removeAll();
-                    /*switch (mode) {
-                        case 1: var gameOverEasy = new GameOverView(window, xResolution, yResolution, game.getScore(), mode); gameOverEasy.init(); break;
-                        case 2: var gameOverNormal = new GameOverView(window, xResolution, yResolution, game.getScore(), mode); gameOverNormal.init(); break;
-                        case 3: var gameOverImpossible = new GameOverView(window, xResolution, yResolution, game.getScore(), mode); gameOverImpossible.init(); break;
-                    }*/
                     var gameOver = new GameOverView(window, xResolution, yResolution, game.getScore(), mode);
                     gameOver.init();
                     window.pack();
