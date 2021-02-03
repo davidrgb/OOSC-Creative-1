@@ -82,7 +82,6 @@ public class EasyView {
                 window.setTitle(formattedTime);
     
                 if (time == 0) {
-                    System.out.println("TIMER ELAPSED");
                     timer.cancel();
                     window.getContentPane().removeAll();
                     var gameOver = new EasyGameOverView(window, xResolution, yResolution);
@@ -93,13 +92,5 @@ public class EasyView {
             }
         };
         timer.scheduleAtFixedRate(timerTask, 1, 1);
-    }
-
-    public Timer getTimer() {
-        return timer;
-    }
-
-    public TimerTask getTimerTask() {
-        return timerTask;
     }
 }
