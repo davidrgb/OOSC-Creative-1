@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,19 +16,23 @@ import model.EasyMode;
 
 public class EasyView {
 
-    private EasyMode easyMode = new EasyMode();
     private JFrame window;
+    private EasyMode easyMode = new EasyMode();
 
     private int xResolution;
     private int yResolution;
 
+    private static Timer timer;
+    private TimerTask timerTask;
+
     private JButton target = new JButton("Click Me To Start");
-    
+
     public EasyView(JFrame window, int xResolution, int yResolution) {
         this.window = window;
-        window.setTitle("Easy Mode");
         this.xResolution = xResolution;
         this.yResolution = yResolution;
+
+        timer = new Timer();
     }
 
     public void init() {
@@ -60,7 +66,40 @@ public class EasyView {
         return yResolution;
     }
 
-    public void setButtonText(int score) {
-        target.setText(String.valueOf(score));
+    public void setButtonText(String buttonText) {
+        target.setText(buttonText);
+    }
+
+    public void countdown() {
+        timer.cancel();
+        timer = new Timer();
+        timerTask = new TimerTask(){
+            public void run() {
+                long time = easyMode.getTime();
+                easyMode.setTime(--time);
+                double timeSeconds = time / 1000.0;
+                String formattedTime = String.format("%.3f", timeSeconds);
+                window.setTitle(formattedTime);
+    
+                if (time == 0) {
+                    System.out.println("TIMER ELAPSED");
+                    timer.cancel();
+                    window.getContentPane().removeAll();
+                    var gameOver = new EasyGameOverView(window, xResolution, yResolution);
+                    gameOver.init();
+                    window.pack();
+                    window.revalidate();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask, 1, 1);
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public TimerTask getTimerTask() {
+        return timerTask;
     }
 }

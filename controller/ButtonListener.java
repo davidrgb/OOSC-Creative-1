@@ -16,14 +16,22 @@ public class ButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         JFrame window = panel.getWindow();
         int xResolution = panel.getXResolution();
         int yResolution = panel.getYResolution();
+
         panel.getEasyMode().incrementScore();
         int score = panel.getEasyMode().getScore();
-        panel.setButtonText(score);
-        System.out.println(score);
+        String buttonText = String.valueOf(score);
+        panel.setButtonText(buttonText);
+
+        panel.getEasyMode().decreaseInterval();
+        panel.getEasyMode().setTime(panel.getEasyMode().getInterval());
+
         panel.getEasyMode().randomLocation(xResolution, yResolution);
         window.setLocation(panel.getEasyMode().getX(), panel.getEasyMode().getY());
+
+        panel.countdown();
     }
 }

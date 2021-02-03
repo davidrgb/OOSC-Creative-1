@@ -22,9 +22,7 @@ public class MainMenu {
         Container container = window.getContentPane();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
-        //panel.setPreferredSize(new Dimension(resolution.width / 5, resolution.width / 5));
         panel.setPreferredSize(new Dimension(xResolution / 5, xResolution / 5));
-        //window.setLocation(resolution.width / 2 - resolution.width / 10, resolution.height / 2 - resolution.width / 10);
         window.setLocation(xResolution / 2 - xResolution / 10, yResolution / 2 - xResolution / 10);
 
         JButton easyButton = new JButton("Easy");
