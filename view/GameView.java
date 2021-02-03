@@ -94,7 +94,7 @@ public class GameView {
                 if (time == 0) {
                     timer.cancel();
                     window.getContentPane().removeAll();
-                    var gameOver = new GameOverView(window, xResolution, yResolution, game.getScore(), mode);
+                    var gameOver = new GameOverView(window, xResolution, yResolution, game.getScore(), mode, game.getScoreList());
                     gameOver.init();
                     window.pack();
                     window.revalidate();

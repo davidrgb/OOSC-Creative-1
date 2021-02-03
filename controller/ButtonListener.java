@@ -16,12 +16,12 @@ public class ButtonListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JFrame window = panel.getWindow();
         int xResolution = panel.getXResolution();
         int yResolution = panel.getYResolution();
 
         panel.getGame().incrementScore();
+        if (panel.getGame().getScore() != 0) panel.getGame().updateScoreList();
         int score = panel.getGame().getScore();
         String buttonText = String.valueOf(score);
         panel.setButtonText(buttonText);

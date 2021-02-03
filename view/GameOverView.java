@@ -16,15 +16,17 @@ public class GameOverView {
     private int yResolution;
 
     private int score;
+    private String scoreList;
 
     private int mode;
 
-    public GameOverView(JFrame window, int xResolution, int yResolution, int score, int mode) {
+    public GameOverView(JFrame window, int xResolution, int yResolution, int score, int mode, String scoreList) {
         this.window = window;
         window.setTitle("Game Over");
         this.xResolution = xResolution;
         this.yResolution = yResolution;
         this.score = score;
+        this.scoreList = scoreList;
         this.mode = mode;
     }
 
@@ -44,6 +46,14 @@ public class GameOverView {
         panel.add(exitButton);
 
         container.add(BorderLayout.CENTER, panel);
+
+        scoreButton.addActionListener( e -> {
+            window.getContentPane().removeAll();
+            var scoreOverview = new ScoreView(window, xResolution, yResolution, score, mode, scoreList);
+            scoreOverview.init();
+            window.pack();
+            window.revalidate();
+        });
 
         exitButton.addActionListener( e -> {
             window.getContentPane().removeAll();

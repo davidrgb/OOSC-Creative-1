@@ -8,6 +8,7 @@ public class Game {
     private int yLocation; // Displacement base on vertical axis
 
     private int score;
+    private String scoreList;
 
     private long interval;
 
@@ -18,6 +19,7 @@ public class Game {
 
     public Game(int interval, double modifier) {
         score = -1;
+        scoreList = "";
         this.interval = interval;
         time = interval;
         this.modifier = modifier;
@@ -41,7 +43,7 @@ public class Game {
     }
 
     public void incrementScore() {
-        ++score;
+        if (time != 0) ++score;
     }
 
     public void decreaseInterval() {
@@ -58,5 +60,16 @@ public class Game {
 
     public long getInterval() {
         return interval;
+    }
+
+    public void updateScoreList() {
+        double elapsedTimeSeconds = (interval - time) / 1000.0;
+        String formattedElapsedTime = String.format("%.3f", elapsedTimeSeconds);
+        String formattedTimeRemaining = String.format("%.3f", time / 1000.0);
+        if (time != 0) scoreList = scoreList + "Score: " + score + " | Elapsed Time: " + formattedElapsedTime + " | Remaining Time: " + formattedTimeRemaining + "\n";
+    }
+
+    public String getScoreList() {
+        return scoreList;
     }
 }
