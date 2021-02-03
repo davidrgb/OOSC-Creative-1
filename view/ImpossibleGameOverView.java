@@ -9,18 +9,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MainMenu {
-
-    private JFrame window;
+public class ImpossibleGameOverView {
+    JFrame window;
 
     private int xResolution;
     private int yResolution;
 
-    public MainMenu(JFrame window, int xResolution, int yResolution) {
+    private int score;
+
+    public ImpossibleGameOverView(JFrame window, int xResolution, int yResolution, int score) {
         this.window = window;
-        window.setTitle("Main Menu");
+        window.setTitle("Game Over");
         this.xResolution = xResolution;
         this.yResolution = yResolution;
+        this.score = score;
     }
 
     public void init() {
@@ -30,32 +32,25 @@ public class MainMenu {
         panel.setPreferredSize(new Dimension(xResolution / 5, xResolution / 5));
         window.setLocation(xResolution / 2 - xResolution / 10, yResolution / 2 - xResolution / 10);
 
-        JButton easyButton = new JButton("Easy");
-        JButton normalButton = new JButton("Normal");
-        JButton impossibleButton = new JButton("Impossible");
-        panel.add(easyButton);
-        panel.add(normalButton);
-        panel.add(impossibleButton);
+        JButton scoreButton = new JButton("Final Score: " + String.valueOf(score));
+        JButton newGameButton = new JButton("New Game");
+        JButton exitButton = new JButton("Exit to Main Menu");
+
+        panel.add(scoreButton);
+        panel.add(newGameButton);
+        panel.add(exitButton);
 
         container.add(BorderLayout.CENTER, panel);
 
-        easyButton.addActionListener( e -> {
+        exitButton.addActionListener( e -> {
             window.getContentPane().removeAll();
-            var easy = new EasyView(window, xResolution, yResolution);
-            easy.init();
+            var mainMenu = new MainMenu(window, xResolution, yResolution);
+            mainMenu.init();
             window.pack();
             window.revalidate();
         });
 
-        normalButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var normal = new NormalView(window, xResolution, yResolution);
-            normal.init();
-            window.pack();
-            window.revalidate();
-        });
-
-        impossibleButton.addActionListener( e -> {
+        newGameButton.addActionListener( e -> {
             window.getContentPane().removeAll();
             var impossible = new ImpossibleView(window, xResolution, yResolution);
             impossible.init();
@@ -63,5 +58,4 @@ public class MainMenu {
             window.revalidate();
         });
     }
-    
 }
