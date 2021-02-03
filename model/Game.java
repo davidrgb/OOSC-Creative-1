@@ -17,8 +17,8 @@ public class Game {
     Random random = new Random();
 
     public Game(int interval, double modifier) {
-        score = 0;
-        this.interval = interval; // 5 seconds / 5000 milliseconds
+        score = -1;
+        this.interval = interval;
         time = interval;
         this.modifier = modifier;
     }
