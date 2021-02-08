@@ -9,9 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controller.GameViewButtonListener;
-import controller.MainMenuButtonListener;
-import controller.ScoreViewButtonListener;
+import controller.ViewButtonListener;
 
 public class GameOverView {
     JFrame window;
@@ -43,21 +41,21 @@ public class GameOverView {
 
         JButton scoreButton = new JButton("Final Score: " + String.valueOf(score));
         JButton newGameButton = new JButton("New Game");
-        JButton exitButton = new JButton("Exit to Main Menu");
+        JButton mainMenuButton = new JButton("Exit to Main Menu");
 
         panel.add(scoreButton);
         panel.add(newGameButton);
-        panel.add(exitButton);
+        panel.add(mainMenuButton);
 
         container.add(BorderLayout.CENTER, panel);
 
-        ScoreViewButtonListener scoreViewButtonListener = new ScoreViewButtonListener(window, xResolution, yResolution, score, mode, scoreList);
+        ViewButtonListener scoreViewButtonListener = new ViewButtonListener(window, xResolution, yResolution, score, mode, scoreList, 5);
         scoreButton.addActionListener(scoreViewButtonListener);
 
-        MainMenuButtonListener mainMenuButtonListener = new MainMenuButtonListener(window, xResolution, yResolution);
-        exitButton.addActionListener(mainMenuButtonListener);
+        ViewButtonListener newGameButtonListener = new ViewButtonListener(window, xResolution, yResolution, mode, 3);
+        newGameButton.addActionListener(newGameButtonListener);
 
-        GameViewButtonListener gameViewButtonListener = new GameViewButtonListener(window, xResolution, yResolution, mode);
-        newGameButton.addActionListener(gameViewButtonListener);
+        ViewButtonListener mainMenuButtonListener = new ViewButtonListener(window, xResolution, yResolution, 1);
+        mainMenuButton.addActionListener(mainMenuButtonListener);
     }
 }
