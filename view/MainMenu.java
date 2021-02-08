@@ -43,7 +43,7 @@ public class MainMenu {
 
         container.add(BorderLayout.CENTER, panel);
 
-        InstructionsButtonListener instructionsButtonListener = new InstructionsButtonListener(this);
+        InstructionsButtonListener instructionsButtonListener = new InstructionsButtonListener(window, xResolution, yResolution);
         instructionsButton.addActionListener(instructionsButtonListener);
 
         easyButton.addActionListener( e -> {

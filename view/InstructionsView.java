@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import controller.MainMenuButtonListener;
+
 public class InstructionsView {
     private JFrame window;
     private JTextArea instructionsArea = new JTextArea();
@@ -48,16 +50,11 @@ public class InstructionsView {
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new GridLayout(1, 1));
 
-        JButton exitButton = new JButton("Exit");
-        controlPanel.add(exitButton);
+        JButton mainMenuButton = new JButton("Exit to Main Menu");
+        controlPanel.add(mainMenuButton);
         container.add(BorderLayout.SOUTH, controlPanel);
 
-        exitButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var mainMenu = new MainMenu(window, xResolution, yResolution);
-            mainMenu.init();
-            window.pack();
-            window.revalidate();
-        });
+        MainMenuButtonListener mainMenuButtonListener = new MainMenuButtonListener(window, xResolution, yResolution);
+        mainMenuButton.addActionListener(mainMenuButtonListener);
     }
 }
