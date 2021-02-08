@@ -26,8 +26,8 @@ public class Game {
     }
 
     public void randomLocation(int xResolution, int yResolution) {
-        xLocation = random.nextInt(xResolution * 7 / 10) + xResolution / 10;
-        yLocation = random.nextInt(yResolution * 7 / 10) + yResolution / 10;
+        xLocation = random.nextInt(xResolution * 7 / 10) + xResolution / 10; // Generates random horizontal location
+        yLocation = random.nextInt(yResolution * 7 / 10) + yResolution / 10; // Generates random vertical location
     }
 
     public int getX() {

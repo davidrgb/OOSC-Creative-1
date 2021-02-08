@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.ScoreViewButtonListener;
+
 public class GameOverView {
     JFrame window;
 
@@ -47,13 +49,8 @@ public class GameOverView {
 
         container.add(BorderLayout.CENTER, panel);
 
-        scoreButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var scoreOverview = new ScoreView(window, xResolution, yResolution, score, mode, scoreList);
-            scoreOverview.init();
-            window.pack();
-            window.revalidate();
-        });
+        ScoreViewButtonListener scoreViewButtonListener = new ScoreViewButtonListener(window, xResolution, yResolution, score, mode, scoreList);
+        scoreButton.addActionListener(scoreViewButtonListener);
 
         exitButton.addActionListener( e -> {
             window.getContentPane().removeAll();
