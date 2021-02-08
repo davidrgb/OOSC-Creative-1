@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import controller.MainMenuButtonListener;
+import controller.ViewButtonListener;
 
 public class InstructionsView {
     private JFrame window;
@@ -54,7 +54,7 @@ public class InstructionsView {
         controlPanel.add(mainMenuButton);
         container.add(BorderLayout.SOUTH, controlPanel);
 
-        MainMenuButtonListener mainMenuButtonListener = new MainMenuButtonListener(window, xResolution, yResolution);
+        ViewButtonListener mainMenuButtonListener = new ViewButtonListener(window, xResolution, yResolution, 1);
         mainMenuButton.addActionListener(mainMenuButtonListener);
     }
 }
