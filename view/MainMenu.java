@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.GameViewButtonListener;
 import controller.InstructionsButtonListener;
 
 public class MainMenu {
@@ -46,29 +47,14 @@ public class MainMenu {
         InstructionsButtonListener instructionsButtonListener = new InstructionsButtonListener(window, xResolution, yResolution);
         instructionsButton.addActionListener(instructionsButtonListener);
 
-        easyButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var easy = new GameView(window, xResolution, yResolution, 1);
-            easy.init();
-            window.pack();
-            window.revalidate();
-        });
+        GameViewButtonListener easyButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 1);
+        easyButton.addActionListener(easyButtonListener);
 
-        normalButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var normal = new GameView(window, xResolution, yResolution, 2);
-            normal.init();
-            window.pack();
-            window.revalidate();
-        });
+        GameViewButtonListener normalButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 2);
+        normalButton.addActionListener(normalButtonListener);
 
-        impossibleButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var impossible = new GameView(window, xResolution, yResolution, 3);
-            impossible.init();
-            window.pack();
-            window.revalidate();
-        });
+        GameViewButtonListener impossibleButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 3);
+        impossibleButton.addActionListener(impossibleButtonListener);
     }
 
     public JFrame getWindow() {

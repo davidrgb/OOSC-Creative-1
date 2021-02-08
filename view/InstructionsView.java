@@ -42,8 +42,8 @@ public class InstructionsView {
         Container container = window.getContentPane();
         var scrollPane = new JScrollPane(instructionsArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setPreferredSize(new Dimension(xResolution / 3, xResolution / 10));
-        window.setLocation(xResolution / 2 - xResolution / 6, yResolution / 2 - xResolution / 20);
+        scrollPane.setPreferredSize(new Dimension(xResolution / 3, xResolution / 10));  // Sets size to 1/3 horizontal resolution by 1/10 horizontal resolution
+        window.setLocation(xResolution / 2 - xResolution / 6, yResolution / 2 - xResolution / 20);  // Centers window based on size
         instructionsArea.setText(instructions);
         container.add(BorderLayout.CENTER, scrollPane);
 
