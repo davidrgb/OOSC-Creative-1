@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.InstructionsButtonListener;
+
 public class MainMenu {
 
     private JFrame window;
@@ -27,8 +29,8 @@ public class MainMenu {
         Container container = window.getContentPane();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(4, 1));
-        panel.setPreferredSize(new Dimension(xResolution / 5, xResolution / 5));
-        window.setLocation(xResolution / 2 - xResolution / 10, yResolution / 2 - xResolution / 10);
+        panel.setPreferredSize(new Dimension(xResolution / 5, xResolution / 5));    // Sets size of window to 1/5 horizontal resolution by 1/5 horizontal resolution.
+        window.setLocation(xResolution / 2 - xResolution / 10, yResolution / 2 - xResolution / 10); // Centers window based on size.
 
         JButton instructionsButton = new JButton("How To Play");
         JButton easyButton = new JButton("Easy");
@@ -41,13 +43,8 @@ public class MainMenu {
 
         container.add(BorderLayout.CENTER, panel);
 
-        instructionsButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var instructions = new InstructionsView(window, xResolution, yResolution);
-            instructions.init();
-            window.pack();
-            window.revalidate();
-        });
+        InstructionsButtonListener instructionsButtonListener = new InstructionsButtonListener(this);
+        instructionsButton.addActionListener(instructionsButtonListener);
 
         easyButton.addActionListener( e -> {
             window.getContentPane().removeAll();
@@ -72,6 +69,18 @@ public class MainMenu {
             window.pack();
             window.revalidate();
         });
+    }
+
+    public JFrame getWindow() {
+        return window;
+    }
+
+    public int getXResolution() {
+        return xResolution;
+    }
+
+    public int getYResolution() {
+        return yResolution;
     }
     
 }
