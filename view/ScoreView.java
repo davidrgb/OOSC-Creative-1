@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import controller.GameOverViewButtonListener;
+
 public class ScoreView {
     private JFrame window;
     private JTextArea scoreArea = new JTextArea();
@@ -48,12 +50,7 @@ public class ScoreView {
         controlPanel.add(exitButton);
         container.add(BorderLayout.SOUTH, controlPanel);
 
-        exitButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var gameOverMenu = new GameOverView(window, xResolution, yResolution, score, mode, scoreList);
-            gameOverMenu.init();
-            window.pack();
-            window.revalidate();
-        });
+        GameOverViewButtonListener mainMenuButtonListener = new GameOverViewButtonListener(window, xResolution, yResolution, score, mode, scoreList);
+        exitButton.addActionListener(mainMenuButtonListener);
     }
 }
