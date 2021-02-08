@@ -9,8 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controller.GameViewButtonListener;
-import controller.InstructionsButtonListener;
 import controller.ViewButtonListener;
 
 public class MainMenu {
