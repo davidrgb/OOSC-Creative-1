@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import controller.GameOverViewButtonListener;
+import controller.ViewButtonListener;
 
 public class ScoreView {
     private JFrame window;
@@ -46,11 +46,11 @@ public class ScoreView {
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new GridLayout(1, 1));
 
-        JButton exitButton = new JButton("Exit");
-        controlPanel.add(exitButton);
+        JButton gameOverMenuButton = new JButton("Exit to Game Over Menu");
+        controlPanel.add(gameOverMenuButton);
         container.add(BorderLayout.SOUTH, controlPanel);
 
-        GameOverViewButtonListener mainMenuButtonListener = new GameOverViewButtonListener(window, xResolution, yResolution, score, mode, scoreList);
-        exitButton.addActionListener(mainMenuButtonListener);
+        ViewButtonListener gameOverMenuButtonListener = new ViewButtonListener(window, xResolution, yResolution, score, mode, scoreList, 4);
+        gameOverMenuButton.addActionListener(gameOverMenuButtonListener);
     }
 }
