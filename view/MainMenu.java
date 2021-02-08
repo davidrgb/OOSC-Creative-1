@@ -56,17 +56,4 @@ public class MainMenu {
         GameViewButtonListener impossibleButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 3);
         impossibleButton.addActionListener(impossibleButtonListener);
     }
-
-    public JFrame getWindow() {
-        return window;
-    }
-
-    public int getXResolution() {
-        return xResolution;
-    }
-
-    public int getYResolution() {
-        return yResolution;
-    }
-    
 }
