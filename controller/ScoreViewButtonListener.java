@@ -27,8 +27,8 @@ public class ScoreViewButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         window.getContentPane().removeAll();
-        var mainMenu = new ScoreView(window, xResolution, yResolution, score, mode, scoreList);
-        mainMenu.init();
+        var scoreView = new ScoreView(window, xResolution, yResolution, score, mode, scoreList);
+        scoreView.init();
         window.pack();
         window.revalidate();
     }

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import controller.GameViewButtonListener;
 import controller.InstructionsButtonListener;
+import controller.ViewButtonListener;
 
 public class MainMenu {
 
@@ -44,16 +45,16 @@ public class MainMenu {
 
         container.add(BorderLayout.CENTER, panel);
 
-        InstructionsButtonListener instructionsButtonListener = new InstructionsButtonListener(window, xResolution, yResolution);
+        ViewButtonListener instructionsButtonListener = new ViewButtonListener(window, xResolution, yResolution, 2);
         instructionsButton.addActionListener(instructionsButtonListener);
 
-        GameViewButtonListener easyButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 1);
+        ViewButtonListener easyButtonListener = new ViewButtonListener(window, xResolution, yResolution, 1, 3);
         easyButton.addActionListener(easyButtonListener);
 
-        GameViewButtonListener normalButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 2);
+        ViewButtonListener normalButtonListener = new ViewButtonListener(window, xResolution, yResolution, 2, 3);
         normalButton.addActionListener(normalButtonListener);
 
-        GameViewButtonListener impossibleButtonListener = new GameViewButtonListener(window, xResolution, yResolution, 3);
+        ViewButtonListener impossibleButtonListener = new ViewButtonListener(window, xResolution, yResolution, 3, 3);
         impossibleButton.addActionListener(impossibleButtonListener);
     }
 }

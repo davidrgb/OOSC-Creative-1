@@ -23,8 +23,8 @@ public class GameViewButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         window.getContentPane().removeAll();
-        var mainMenu = new GameView(window, xResolution, yResolution, mode);
-        mainMenu.init();
+        var gameView = new GameView(window, xResolution, yResolution, mode);
+        gameView.init();
         window.pack();
         window.revalidate();
     }
