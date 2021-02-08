@@ -52,26 +52,6 @@ public class GameView {
         ButtonListener buttonListener = new ButtonListener(window, xResolution, yResolution, target, game);
         target.addActionListener(buttonListener);
     }
-    
-    public JFrame getWindow() {
-        return window;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public int getXResolution() {
-        return xResolution;
-    }
-
-    public int getYResolution() {
-        return yResolution;
-    }
-
-    public void setButtonText(String buttonText) {
-        target.setText("Score: " + buttonText);
-    }
 
     public void updateTitle(String title) {
         window.setTitle(title);

@@ -63,18 +63,6 @@ public class Game {
         time = interval;
     }
 
-    /*public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
-    }*/
-
-    /*public long getInterval() {
-        return interval;
-    }*/
-
     public void updateScoreList() {
         double elapsedTimeSeconds = (interval - time) / 1000.0;
         String formattedElapsedTime = String.format("%.3f", elapsedTimeSeconds);
