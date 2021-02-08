@@ -1,8 +1,14 @@
 package model;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import view.GameView;
 
 public class Game {
+
+    private GameView panel;
 
     private int xLocation; // Displacement based on horizontal axis
     private int yLocation; // Displacement base on vertical axis
@@ -15,14 +21,20 @@ public class Game {
     private long time;
     private double modifier;
 
+    private static Timer timer;
+    private TimerTask timerTask;
+
     Random random = new Random();
 
-    public Game(int interval, double modifier) {
+    public Game(int interval, double modifier, GameView panel) {
         score = -1;
         scoreList = "";
         this.interval = interval;
         time = interval;
         this.modifier = modifier;
+        this.panel = panel;
+
+        timer = new Timer();
     }
 
     public void randomLocation(int xResolution, int yResolution) {
@@ -48,19 +60,20 @@ public class Game {
 
     public void decreaseInterval() {
         interval = Math.round(interval * modifier);
+        time = interval;
     }
 
-    public long getTime() {
+    /*public long getTime() {
         return time;
     }
 
     public void setTime(long time) {
         this.time = time;
-    }
+    }*/
 
-    public long getInterval() {
+    /*public long getInterval() {
         return interval;
-    }
+    }*/
 
     public void updateScoreList() {
         double elapsedTimeSeconds = (interval - time) / 1000.0;
@@ -71,5 +84,24 @@ public class Game {
 
     public String getScoreList() {
         return scoreList;
+    }
+
+    public void countdown() {
+        timer.cancel();
+        timer = new Timer();
+        timerTask = new TimerTask(){
+            public void run() {
+                --time;
+                double timeSeconds = time / 1000.0;
+                String formattedTime = String.format("%.1f", timeSeconds);
+                panel.updateTitle(formattedTime);
+    
+                if (time == 0) {
+                    timer.cancel();
+                    panel.gameOver();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(timerTask, 1, 1);
     }
 }

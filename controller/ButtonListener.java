@@ -3,35 +3,39 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import view.GameView;
+import model.Game;
 
 public class ButtonListener implements ActionListener {
-    private GameView panel;
+    private JFrame window;
+    private int xResolution;
+    private int yResolution;
+    private JButton button;
+    private Game game;
 
-    public ButtonListener(GameView panel) {
-        this.panel = panel;
+    public ButtonListener(JFrame window, int xResolution, int yResolution, JButton button, Game game) {
+        this.window = window;
+        this.xResolution = xResolution;
+        this.yResolution = yResolution;
+        this.button = button;
+        this.game = game;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame window = panel.getWindow();
-        int xResolution = panel.getXResolution();
-        int yResolution = panel.getYResolution();
-
-        panel.getGame().incrementScore();
-        if (panel.getGame().getScore() != 0) panel.getGame().updateScoreList();
-        int score = panel.getGame().getScore();
+        game.incrementScore();
+        int score = game.getScore();
+        if (score != 0) game.updateScoreList();
         String buttonText = String.valueOf(score);
-        panel.setButtonText(buttonText);
+        button.setText("Score: " + buttonText);
 
-        panel.getGame().decreaseInterval();
-        panel.getGame().setTime(panel.getGame().getInterval());
+        game.decreaseInterval();
 
-        panel.getGame().randomLocation(xResolution, yResolution);
-        window.setLocation(panel.getGame().getX(), panel.getGame().getY());
+        game.randomLocation(xResolution, yResolution);
+        window.setLocation(game.getX(), game.getY());
 
-        panel.countdown();
+        game.countdown();
     }
 }
