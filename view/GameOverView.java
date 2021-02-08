@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.GameViewButtonListener;
+import controller.MainMenuButtonListener;
 import controller.ScoreViewButtonListener;
 
 public class GameOverView {
@@ -52,20 +54,10 @@ public class GameOverView {
         ScoreViewButtonListener scoreViewButtonListener = new ScoreViewButtonListener(window, xResolution, yResolution, score, mode, scoreList);
         scoreButton.addActionListener(scoreViewButtonListener);
 
-        exitButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var mainMenu = new MainMenu(window, xResolution, yResolution);
-            mainMenu.init();
-            window.pack();
-            window.revalidate();
-        });
+        MainMenuButtonListener mainMenuButtonListener = new MainMenuButtonListener(window, xResolution, yResolution);
+        exitButton.addActionListener(mainMenuButtonListener);
 
-        newGameButton.addActionListener( e -> {
-            window.getContentPane().removeAll();
-            var game = new GameView(window, xResolution, yResolution, mode);
-            game.init();
-            window.pack();
-            window.revalidate();
-        });
+        GameViewButtonListener gameViewButtonListener = new GameViewButtonListener(window, xResolution, yResolution, mode);
+        newGameButton.addActionListener(gameViewButtonListener);
     }
 }
